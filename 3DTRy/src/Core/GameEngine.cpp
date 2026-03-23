@@ -1,11 +1,14 @@
 #include "GameEngine.hpp"
+#include "raylib/raylib.h"
 
 void GameEngine::Game::MainLoop(Camera3D& camera) {
     InitWindow(windowWidth, windowHeight, title.c_str());
     Init();
+    float dt;
     while (IsRunning()) {
+        dt=GetFrameTime();
         // calculations before it
-        Update();
+        Update(dt);
         // Drawing
         BeginDrawing();
        
