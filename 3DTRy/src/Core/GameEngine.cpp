@@ -10,7 +10,7 @@ void GameEngine::Game::MainLoop(Camera3D& camera) {
         BeginDrawing();
        
         BeginMode3D(camera);
-       ClearBackground(RAYWHITE);
+        ClearBackground(RAYWHITE);
 
         Draw();
         EndMode3D();

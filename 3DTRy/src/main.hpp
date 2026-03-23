@@ -1,10 +1,13 @@
 #pragma once
 #include "Core/GameEngine.hpp"
-#include <glm/vec2.hpp>
-#include <iostream>
+#include <glm/ext/vector_float2.hpp>
+#include <glm/ext/vector_float3.hpp>
+#include <glm/geometric.hpp>
+#include "Prefabs/player.hpp"
 
 class FirstGame : GameEngine::Game {
   private:
+    Player player{glm::vec3(3.0f,1,-25),0.75,1,MAGENTA};
     bool IsRunning() override;
     void Update() override;
     void Draw() override;
@@ -16,7 +19,7 @@ class FirstGame : GameEngine::Game {
     FirstGame(int width, int height, std::string title)
         : GameEngine::Game(width, height, title) {
         SetupCamera(camera);
-        MainLoop(camera);
+       
     };
     void run() {
         SetupCamera(camera);

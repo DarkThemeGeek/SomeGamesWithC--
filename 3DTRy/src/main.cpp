@@ -1,10 +1,11 @@
 #include "main.hpp"
-#include "../../include/raylib/raylib.h"
-#include "../../include/raylib/raymath.h"
+#include <raylib/raylib.h>
+#include <raylib/raymath.h>
 #include "Core/GameEngine.hpp"
 #include <cstdlib>
 #include <format>
 #include <glm/ext/vector_float2.hpp>
+#include <glm/ext/vector_float3.hpp>
 #include <glm/geometric.hpp>
 #include <iostream>
 
@@ -16,18 +17,29 @@ int main() {
 }
 
 bool FirstGame::IsRunning() { return GameEngine::Game::IsRunning(); };
-void FirstGame::Update() { 
+void FirstGame::Update() {
+    // if (IsWindowFocused()){
+
+    //     HideCursor();
+    //     DisableCursor();
+    //     SetMousePosition(windowWidth / 2, windowHeight / 2);
+    // }
+    player.Walk();
     UpdateCamera(&camera, CAMERA_FREE);
-    
- };
+};
 void FirstGame::Draw() {
 
     DrawGrid(100, 1.0f);
-    DrawCube({0, 1, 0}, 1, 1, 1, RED);
-
-   
+    player.Draw();
+    DrawCube({3, 0, 0}, 10, 1, 50, RED);
 };
-void FirstGame::Init() {};
+void FirstGame::Init() {
+
+    player.speed = glm::vec3{0, 0, 1};
+    camera.position = {player.position.x, player.position.y+10, player.position.z-10};
+    
+
+};
 void FirstGame::Shutdown() { GameEngine::Game::Shutdown(); };
 
 void FirstGame::SetupCamera(Camera3D &camera) {

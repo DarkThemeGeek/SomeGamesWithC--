@@ -1,5 +1,6 @@
 #pragma once
 #include "../../../include/raylib/raylib.h"
+#include <raylib/raylib.h>
 #include <string>
 namespace GameEngine {
 class Game {
